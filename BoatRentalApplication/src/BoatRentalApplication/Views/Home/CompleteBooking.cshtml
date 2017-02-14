@@ -1,0 +1,26 @@
+﻿@model BoatRentalApplication.Models.Booking
+@* visar bokningen som sparas *@
+<div class="col-lg-12 well">
+    <h1>Bokning sparad</h1>
+    <table class="table">
+        <tr>
+            <th>Bokningsnummer</th>
+            <th>Båt</th>
+            <th>Båtnummer</th>
+            <th>Kategori</th>
+            <th>Kund</th>
+            <th>Personnummer</th>
+            <th>Utlämnad</th>
+        </tr>
+        
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Boat.Name</td>
+            <td>@Model.Boat.Id</td>
+            <td>@Model.Boat.Category.Type</td>
+            <td>@Model.Customer.FirstName @Model.Customer.LastName</td>
+            <td>@Model.Customer.SocialSecurityNumber</td>
+            <td>@Model.RentalDate</td>
+        </tr>
+    </table>
+</div>

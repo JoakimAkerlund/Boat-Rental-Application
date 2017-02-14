@@ -1,0 +1,38 @@
+﻿@model BoatRentalApplication.Viewmodels.BookingViewModel
+<div class="col-lg-12 well">
+    <h1>Boka</h1>
+    <table class="table">
+        <tr>
+            <th>Välj kund</th>
+            <th>Båt</th>
+            <th>Båtnummer</th>
+            <th>Kategori</th>
+            <th>Pris</th>
+            <th></th>
+        </tr>
+        <tr>
+            @* skickar båtid och kategoriid vidare till actionmetod *@
+            <form asp-action="CompleteBooking" asp-route-BoatId="@Model.Boat.Id" asp-route-CategoryId="@Model.Category.CategoryId">
+                @* visar alla kunder som finns inlagda i databasen *@
+                <td>
+                    <select asp-for="CustomerId">
+                        @foreach (var customer in Model.Customers)
+                        {
+                            //skickar vidare id på vald kund
+                            <option name="CustomerId" value="@customer.Id">@customer.FirstName @customer.LastName</option>
+
+                        }                        
+                    </select>
+                    @* visar vald båt *@
+                </td>
+                <td>@Model.Boat.Name</td>
+                <td>@Model.Boat.Id</td>
+                <td>@Model.Category.Type</td>
+                <td>@Model.Boat.Price</td>                
+                <td>
+                    <input type="submit" value="Slutför bokning" class="btn btn-primary pull-right" />
+                </td>
+            </form>            
+        </tr>
+    </table>
+</div>

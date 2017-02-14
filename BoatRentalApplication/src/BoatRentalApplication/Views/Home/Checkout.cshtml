@@ -1,0 +1,20 @@
+﻿@model BoatRentalApplication.Models.Booking
+
+<div class="col-lg-12 well">
+    <h1>Återlämning av båt</h1>
+    <table class="table">
+        <tr>
+            <th>Båt</th>
+            <th>Båtnummer</th>
+            <th>Återlämnad</th>
+            <th>Kostnad</th>
+        </tr>
+        <tr>
+            <td>@Model.Boat.Name</td>
+            <td>@Model.Boat.Id</td>
+            <td>@Model.ReturnDate</td>
+            <td>@Model.RentalCost</td>
+        </tr>
+    </table>
+
+</div>

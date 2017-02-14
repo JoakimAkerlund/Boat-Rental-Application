@@ -1,0 +1,32 @@
+﻿@model IEnumerable<BoatRentalApplication.Models.Boat>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    @* visar alla tillgängliga båtar *@
+    @foreach (var Boat in Model)
+    {
+        <div class="col-md-4 col-lg-4 well">
+            <h1>@Boat.Name</h1>
+            <label>Båtnummer</label>
+            <p>@Boat.Id</p>
+            <label>Kategori</label>
+            <p>@Boat.Category.Type</p>
+            <label>Kostnad</label>
+            <p>@Boat.Price</p>
+            @* skickar vidare båtid samt kategoriid för vald båt till actionmetod *@
+            <form asp-action="Reserve" asp-route-BoatId="@Boat.Id" asp-route-CategoryId="@Boat.Category.CategoryId">
+                @* om båt redan är uthyrd går den inte att hyra *@
+                @if (Boat.Available == false)
+                {
+                    <input value="Uthyrd" class="btn btn-danger pull-right"/>
+
+                }
+                else { 
+                <input type="submit" value="Boka" class="btn btn-primary pull-right" />
+                }
+            </form>
+        </div>
+    }
+</div>  

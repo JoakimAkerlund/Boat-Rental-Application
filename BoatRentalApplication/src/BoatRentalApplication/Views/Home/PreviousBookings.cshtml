@@ -1,0 +1,29 @@
+﻿@model IEnumerable<BoatRentalApplication.Models.Booking>
+<div class="col-lg-12 well">
+    <table class="table">
+        <tr>
+            <th>Bokningsnummer</th>
+            <th>Utlämnad</th>
+            <th>Återlämnad</th>
+            <th>Båtnamn</th>
+            <th>Båtnummer</th>
+            <th>Kategori</th>
+            <th>Kund</th>
+            <th>Kostnad</th>
+        </tr>
+        @* alla bokningar som inte är aktiva *@
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.Id</td>
+                <td>@booking.RentalDate</td>                
+                <td>@booking.ReturnDate</td>
+                <td>@booking.Boat.Name</td>
+                <td>@booking.Boat.Id</td>
+                <td>@booking.Boat.Category.Type</td>
+                <td>@booking.Customer.FirstName @booking.Customer.LastName</td>
+                <td>@booking.RentalCost</td>
+            </tr>
+        }
+    </table>
+</div>
