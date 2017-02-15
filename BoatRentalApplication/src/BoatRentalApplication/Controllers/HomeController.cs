@@ -15,18 +15,20 @@ namespace BoatRentalApplication.Controllers
         {
             repository = repo;            
         }
+        //startsida
         public IActionResult Index()
         {
             var boats = repository.Boats();
             return View(boats);
         }
-        
+        //Bokning
         [HttpPost]
         public IActionResult Reserve(int BoatId, int CategoryId)
         {
             var bvm = repository.bookingViewModel(BoatId, CategoryId);
             return View(bvm);            
         }
+        //Slutför bokning
         [HttpPost]
         public IActionResult CompleteBooking(int BoatId,int CategoryId, int CustomerId)
         {            
@@ -34,19 +36,33 @@ namespace BoatRentalApplication.Controllers
             var booking = repository.BookBoat(BoatId, CategoryId, CustomerId,rentalDate);
             return View(booking);
         }
+        //aktiva bokningar
         public IActionResult Bookings()
         {
             return View(repository.Bookings());
         }
+        //återlämning av båt
         [HttpPost]
         public IActionResult Checkout(int BookingId)
         {
             
             return View(repository.CheckoutBooking(BookingId));
         }        
+        //inaktiva bokningar
         public IActionResult PreviousBookings()
         {
             return View(repository.PreviousBookings());
+        }        
+        public IActionResult AddCustomer()
+        {
+            return View();
+        }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public IActionResult AddCustomer(Customer customer)
+        {
+            repository.AddCustomer(customer);
+            return RedirectToAction("Index");
         }
         public IActionResult Error()
         {

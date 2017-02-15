@@ -91,6 +91,12 @@ namespace BoatRentalApplication.Data
             
             return BVM;
         }
+        
+        public void AddCustomer(Customer customer)
+        {
+            context.Customer.Add(customer);
+            context.SaveChanges();
+        }
 
         
     }
@@ -102,5 +108,8 @@ namespace BoatRentalApplication.Data
         IEnumerable<Booking> Bookings();
         Booking CheckoutBooking(int BookingId);
         IEnumerable<Booking> PreviousBookings();
+        void AddCustomer(Customer customer);
+
+        }
     }
-}
+

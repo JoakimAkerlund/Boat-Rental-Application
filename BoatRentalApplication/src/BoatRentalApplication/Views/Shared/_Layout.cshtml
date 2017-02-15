@@ -34,18 +34,15 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Hem</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Bookings">Bokningar</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="PreviousBookings">Tidigare bokningar</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="AddCustomer">Lägg till kund</a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2017 - BoatRentalApplication</p>
-        </footer>
+        
     </div>
-
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
