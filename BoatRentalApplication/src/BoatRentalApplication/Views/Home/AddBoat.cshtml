@@ -1,0 +1,22 @@
+﻿@model BoatRentalApplication.Viewmodels.BoatViewModel
+
+<div class="col-lg-6 well">
+    <h1>Lägg till Båt</h1>
+    <form asp-action="AddBoat" method="post">
+    <label asp-for="Boat.Name">Båtnamn</label><br />
+    <input asp-for="Boat.Name" value="" />
+    <span class="text-danger" asp-validation-for="Boat.Name"></span>
+    <br />
+        <label asp-for="Boat.CategoryId">Välj kategori</label><br />
+        <select asp-for="Boat.CategoryId">
+            @foreach (var category in Model.Category)
+            {
+                <option value="@category.CategoryId">@category.Type</option>
+            }
+        </select>
+        <br />
+        <br />
+        <input type="submit" value="Spara kund" class="btn btn-primary" />
+</form>
+</div>
+<div class="col-lg-6"></div>

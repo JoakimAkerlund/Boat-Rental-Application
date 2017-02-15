@@ -99,7 +99,40 @@ namespace BoatRentalApplication.Data
             context.SaveChanges();
         }
 
-        
+        public BoatViewModel BoatViewModel()
+        {
+            var boatViewModel = new BoatViewModel();
+            boatViewModel.Category = context.Category.ToList();
+            return boatViewModel;
+        }
+
+        public void AddBoat(Boat boat)
+        {
+            var category = context.Category.FirstOrDefault(cat => cat.CategoryId == boat.CategoryId);
+            string price;
+            if(category.Type== "Segelbåt > 40 fot")
+            {
+                price = "grundavgift * 1.5 + timpris * 1.4 * antal timmar";
+            }
+            else if (category.Type == "Segelbåt < 40 fot")
+            {
+                price = "grundavgift * 1.2 + timpris * 1.3 * antal timmar";
+            }
+            else
+            {
+                price = "grundavgift + timpris * antal timmar";
+            }
+            var newBoat = new Boat()
+            {
+                Name=boat.Name,
+                Available = true,
+                CategoryId=category.CategoryId,
+                Category=category,
+                Price=price
+            };
+            context.Add(newBoat);
+            context.SaveChanges();
+        }
     }
     public interface IAppRepository
     {
@@ -110,7 +143,8 @@ namespace BoatRentalApplication.Data
         Booking CheckoutBooking(int BookingId);
         IEnumerable<Booking> PreviousBookings();
         void AddCustomer(Customer customer);
-
+        BoatViewModel BoatViewModel();
+        void AddBoat(Boat boat);
         }
     }
 

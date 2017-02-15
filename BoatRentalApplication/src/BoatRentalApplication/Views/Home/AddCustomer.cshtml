@@ -1,34 +1,34 @@
 ﻿@model BoatRentalApplication.Models.Customer
-<div class="col-lg-4"></div>
-<div class="col-lg-4 well">
+
+<div class="col-lg-6 well">
     <h1>Lägg till kund</h1>
     <form asp-action="AddCustomer" method="post">
         <label asp-for="FirstName">Förnamn</label><br />
         <input asp-for="FirstName" value="" />
-        <span asp-validation-for="FirstName"></span>
+        <span class="text-danger" asp-validation-for="FirstName"></span>
         <br />
         <label asp-for="LastName">Efternamn</label><br />
         <input asp-for="LastName" value="" />
-        <span asp-validation-for="LastName"></span>
+        <span class="text-danger"  asp-validation-for="LastName"></span>
         <br />
         <label asp-for="SocialSecurityNumber">Personnummer</label><br />
         <input asp-for="SocialSecurityNumber" value="" />
-        <span asp-validation-for="SocialSecurityNumber"></span>
+        <span class="text-danger"  asp-validation-for="SocialSecurityNumber"></span>
         <br />
         <label asp-for="Phone">Telefon</label><br />
         <input asp-for="Phone" value="" />
-        <span asp-validation-for="Phone"></span>
+        <span class="text-danger"  asp-validation-for="Phone"></span>
         <br />
         <label asp-for="Email">Email</label><br />
         <input asp-for="Email" value="" />
-        <span asp-validation-for="Email"></span>
+        <span class="text-danger" asp-validation-for="Email"></span>
         <br />
         <label asp-for="Address">Adress</label><br />
         <input asp-for="Address" value="" />
-        <span asp-validation-for="Address"></span>
+        <span class="text-danger"  asp-validation-for="Address"></span>
         <br />
         <br />
         <input type="submit" value="Spara kund" class="btn btn-primary"/>
     </form>
 </div>
-<div class="col-lg-4"></div>
+<div class="col-lg-6"></div>

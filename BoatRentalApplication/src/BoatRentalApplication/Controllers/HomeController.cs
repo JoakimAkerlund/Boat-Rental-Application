@@ -63,8 +63,27 @@ namespace BoatRentalApplication.Controllers
         [HttpPost]
         public IActionResult AddCustomer(Customer customer)
         {
+            if (ModelState.IsValid) { 
             repository.AddCustomer(customer);
             return RedirectToAction("Index");
+            }
+            return View();
+        }
+        //Lägg till ny båt
+        public IActionResult AddBoat()
+        {
+            return View(repository.BoatViewModel());
+        }
+        //tar emot uppgifter om ny båt
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public IActionResult AddBoat(Boat boat)
+        {
+            if (ModelState.IsValid) { 
+            repository.AddBoat(boat);
+            return RedirectToAction("Index");
+            }
+            return View(repository.BoatViewModel());
         }
         public IActionResult Error()
         {
