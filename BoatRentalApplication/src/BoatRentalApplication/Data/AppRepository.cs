@@ -52,6 +52,7 @@ namespace BoatRentalApplication.Data
             var category = context.Category.FirstOrDefault(cat => cat.CategoryId == boat.CategoryId);
             var customer = context.Customer.FirstOrDefault(cust => cust.Id == booking.CustomerId);
             booking.ReturnDate = DateTime.Now;
+            //räknar ut kostnaden för båten i metoden calculateCost i klassen booking
             booking.RentalCost = booking.CalculateCost(booking.Boat.Category.Type, booking.RentalDate, booking.ReturnDate);
             //gör båten tillgänglig för uthyrning igen
             boat.Available = true;

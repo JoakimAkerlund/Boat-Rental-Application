@@ -53,10 +53,12 @@ namespace BoatRentalApplication.Controllers
         {
             return View(repository.PreviousBookings());
         }        
+        //Lägga till ny kund
         public IActionResult AddCustomer()
         {
             return View();
         }
+        //tar emot kunduppgifter för ny kund
         [ValidateAntiForgeryToken]
         [HttpPost]
         public IActionResult AddCustomer(Customer customer)
